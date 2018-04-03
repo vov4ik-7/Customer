@@ -1,0 +1,5 @@
+/Users/vova/Documents/C#/Customer/Customer/bin/Debug/Customer.exe
+/Users/vova/Documents/C#/Customer/Customer/bin/Debug/Customer.pdb
+/Users/vova/Documents/C#/Customer/Customer/obj/x86/Debug/Customer.csproj.CoreCompileInputs.cache
+/Users/vova/Documents/C#/Customer/Customer/obj/x86/Debug/Customer.exe
+/Users/vova/Documents/C#/Customer/Customer/obj/x86/Debug/Customer.pdb
