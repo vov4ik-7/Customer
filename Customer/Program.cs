@@ -13,7 +13,7 @@ namespace Customer
                 int times = (int)order.getCount() / 5;
                 double discount = 0;
                 for (int i = 0; i < times; ++i) {
-                    discount += order[(i + 1) * 5].Commodity.Price / 2;
+                    discount += order[((i + 1) * 5) - 1].Commodity.Price / 2;
                 }
                 return discount;
             }
@@ -176,10 +176,12 @@ namespace Customer
             this.promotionalPrograms = new List<IPromotionalProgram>();
         }
         public Customer (IPromotionalProgram promotionalProgram) {
+            this.orders = new List<Order>();
             this.promotionalPrograms = new List<IPromotionalProgram>();
             this.promotionalPrograms.Add(promotionalProgram);
         }
         public Customer (List<IPromotionalProgram> promotionalPrograms) {
+            this.orders = new List<Order>();
             this.promotionalPrograms = promotionalPrograms;
         }
         public Customer (Order order, List<IPromotionalProgram> promotionalPrograms = null) {
@@ -220,14 +222,6 @@ namespace Customer
     {
         public static void Main(string[] args)
         {
-            Product a = new Product();
-            Product b = new Product("Ice-cream", 0.5);
-            OrderLine c = new OrderLine(a, 2);
-            OrderLine d = new OrderLine(b, 3);
-            List<OrderLine> q = new List<OrderLine>();
-            q.Add(c); q.Add(d);
-            Order w = new Order(q);
-
             List<IPromotionalProgram> listP = new List<IPromotionalProgram>();
             EveryFifthProduct discount1 = new EveryFifthProduct();
             TotalSumDiscount discount2 = new TotalSumDiscount();
@@ -237,7 +231,12 @@ namespace Customer
             listP.Add(discount3);
 
 
-            Customer p = new Customer(w, listP);
+            Customer p = new Customer(listP);
+            p.startOrder();
+            p.buy(new Product("Ice-cream", 0.4), 5);
+            p.buy(new Product("Chocolate", 1), 4);
+            p.commitOrder();
+
             p.startOrder();
             p.buy(new Product("Nesquik", 2), 3);
             p.buy(new Product("Milk", 1), 1);
@@ -247,8 +246,17 @@ namespace Customer
             p.buy(new Product("Yogurt", 0.4), 6);
             p.commitOrder();
 
+            p.startOrder();
+            p.buy(new Product("Pepsi", 3), 2);
+            p.buy(new Product("Snikers", 1), 3);
+            p.buy(new Product("Nesquik", 2), 1);
+            p.buy(new Product("Kit-kat", 0.5), 4);
+            p.buy(new Product("Mars", 0.7), 2);
+            p.commitOrder();
 
-            //Console.WriteLine("{0:C}", 10);
+            p.printOrders();
+
+            Console.WriteLine("{0:C}", 10);
         }
     }
 }
