@@ -254,9 +254,13 @@ namespace Customer
             p.buy(new Product("Mars", 0.7), 2);
             p.commitOrder();
 
-            p.printOrders();
-
-            Console.WriteLine("{0:C}", 10);
+            p.startOrder();
+            p.buy(new Product("Pepsi", 3), 2);
+            p.buy(new Product("Snikers", 1), 3);
+            p.buy(new Product("Nesquik", 2), 1);
+            p.buy(new Product("Kit-kat", 0.5), 4);
+            p.buy(new Product("Mars", 0.7), 2);
+            p.commitOrder();
         }
     }
 }
