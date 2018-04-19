@@ -261,6 +261,15 @@ namespace Customer
             p.buy(new Product("Kit-kat", 0.5), 4);
             p.buy(new Product("Mars", 0.7), 2);
             p.commitOrder();
+
+            p.startOrder();
+            p.buy(new Product("Nesquik", 2), 3);
+            p.buy(new Product("Milk", 1), 1);
+            p.buy(new Product("Cheese", 0.20), 1);
+            p.buy(new Product("Bread", 1), 1);
+            p.buy(new Product("Butter", 1.5), 1);
+            p.buy(new Product("Yogurt", 0.4), 6);
+            p.commitOrder();
         }
     }
 }
